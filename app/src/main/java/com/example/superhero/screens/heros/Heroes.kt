@@ -31,6 +31,7 @@ fun Heroes(
 
 ){
     val superheroes: List<SuperHero> by heroesViewModel.heroes.observeAsState(listOf())
+    HeroesList(heroes = superheroes, selectHero = selectHero)
 }
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -69,7 +70,7 @@ fun SuperheRow(hero: SuperHero, selectHero: (name: String) -> Unit){
 @Composable
 fun SuperHeroImage(hero: SuperHero){
     Image(
-        painter = rememberImagePainter(hero.image),
+        painter = rememberImagePainter(hero.image.url),
         contentDescription = null,
         modifier = Modifier.size(128.dp)
     )
